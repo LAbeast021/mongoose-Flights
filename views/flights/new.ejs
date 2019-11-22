@@ -1,0 +1,40 @@
+<%- include('../partials/header')%>
+<div id="adding-flight-form">
+    <form action="/flights" method="POST" >
+
+        <h4> Please Select The Airport ➥</h4>
+        <select name="airport" id="airport">
+            <option value="LAX">LAX</option>
+            <option value="AUS">AUS</option>
+            <option value="DAL">DAL</option>
+            <option value="SAN">SAN</option>
+            <option value="SEA">SEA</option>
+        </select>
+
+        <h4>Please Select The Airline ✈</h4>
+        <select name="airline" id="airline">
+            <option value="American">American</option>
+            <option value="Southwest">Southwest</option>
+            <option value="United">United</option>
+        </select>
+        <h4>Please Enter The Flight Number ⇢</h4>
+        <input type="number" name="flightNo" placeholder="Flight Number">
+        <h4>Please Select The Departure Date ►</h4>
+        <input type="date" name="departs">
+        <input id="submit-button" type="submit" value="Add The Flight">
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/footer') %>  

@@ -1,0 +1,21 @@
+*{
+  box-sizing: border-box;
+};
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+#adding-flight-form{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+  border: red 5px solid
+};
+#submit-button{
+  width: 100px;
+}
