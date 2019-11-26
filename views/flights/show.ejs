@@ -1,23 +1,53 @@
 <%- include('../partials/header') %>
+<div class="container-show">
+---------------------------------------------------------------------
+<h1> FROM</h1>
+
+<h1> <%= flight.airport%></h1>
 <h1> <%= flight.airline %></h1>
 <h1> <%= flight.flightNo %></h1>
 <h1> <%= flight.departs %></h1>
-<h1> <%= flight.airport%></h1>
 <br>
-<h1>saaagg</h1>
-<% flight.destination.forEach(function(d) { %>
- <%= d.airport %>
-<% }); %>
+---------------------------------------------------------------------
+<h1>TO</h1>
+<% destination.forEach(function(d) { %>
+  <h3>
+    <%= d.airport %>
+    <%= d.arrival %>
+  </h3>
+<% }) %>
+---------------------------------------------------------------------
+<h1> Tickets </h1>
+<div class="ticket-container">
+  <p>Seats</p>
+  <p>price</p>
+<% tickets.forEach(function(t){ %>
+  <h1> <%= t.seat %></h1>
+  <h1> $<%= t.price %></h1>
+<%})%>
 <br><br>
 <br><br>
-<h2>Reviews</h2>
+</div>
+---------------------------------------------------------------------
+
+<h2> adding destinations</h2>
 <form id="add-destination" method="POST" action="/flights/<%= flight._id %>/destinations">
   <label>Add Destination :</label>
   <h4> Please Select The Destination's Airport</h4>
   <!-- <select name="airport" id="destination-form">
   </select> -->
-  <input type="text" name="airport">
+  <input type="date" name="arrival">
+  
+  <select name="airport">
+    <% airportList.forEach(function(airport)
+      {if(airport !== flight.airport && !chosenAirports.includes(airport)){%>
+        <option value="<%= airport%>"><%= airport%></option>
+    <%}});%>
+  </select>
   
   <input type="submit" value="Add The Destination">
 </form>
+<br><br>
+<a href="/flights/<%= flight.id%>/tickets/new" style="margin-left: 60%; margin:40%; padding: 50px;"> ADD A NEW TICKET</a>
+</div>
 <%- include('../partials/footer') %>

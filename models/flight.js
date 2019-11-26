@@ -34,6 +34,8 @@ var flightSchema = new Schema ( {
         default: "LAX"
     },
     destination:[destinationSchema]
+},{
+    timestamps: true
 });
 
 module.exports = mongoose.model("Flight",flightSchema);

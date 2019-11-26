@@ -19,3 +19,17 @@ a {
 #submit-button{
   width: 100px;
 }
+.container-show{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.ticket-container{
+ align-items: center;
+  width: 30%;
+  display: grid;
+  grid-template-columns: auto auto;
+
+
+}
