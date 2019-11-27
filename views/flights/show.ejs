@@ -1,34 +1,63 @@
 <%- include('../partials/header') %>
 <div class="container-show">
----------------------------------------------------------------------
-<h1> FROM</h1>
+--------------------------------------------------------------------------------------------------
+<h1> Departure</h1>
+<div class="from-container">
+  <h2>Airport</h2>
+  <h3> <%= flight.airport%></h3>
+  <h2>Airline</h2>
+  <h3> <%= flight.airline %></h3>
+  <h2>Flight Number</h2>
+  <h3> <%= flight.flightNo %></h3>
+  <h2>Departure Date</h2>
+  <% function formatDate(date) { %>
+    <% var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",  "November", "December"]; %>
+  
+    <% var day = date.getDate(); %>
+    <% var monthIndex = date.getMonth(); %>
+    <% var year = date.getFullYear(); %>
+  
+    <% return day + ' ' + monthNames[monthIndex] + ' ' + year; %>
+  <% } %>
+  <% let date = formatDate(flight.departs) %>
+  <h3> <%= date %></h3>
 
-<h1> <%= flight.airport%></h1>
-<h1> <%= flight.airline %></h1>
-<h1> <%= flight.flightNo %></h1>
-<h1> <%= flight.departs %></h1>
 <br>
----------------------------------------------------------------------
+</div>
+--------------------------------------------------------------------------------------------------
 <h1>TO</h1>
+<div class="arrival-container">
+  <h2>Arrival Airport</h2>
+  <h2>Arrival Date</h2>
 <% destination.forEach(function(d) { %>
-  <h3>
-    <%= d.airport %>
-    <%= d.arrival %>
-  </h3>
+  <h3> <%= d.airport %></h3>
+  <% function formatDate(date) { %>
+    <% var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",  "November", "December"]; %>
+  
+    <% var day = date.getDate(); %>
+    <% var monthIndex = date.getMonth(); %>
+    <% var year = date.getFullYear(); %>
+  
+    <% return day + ' ' + monthNames[monthIndex] + ' ' + year; %>
+  <% } %>
+  <% let date = formatDate(d.arrival) %>
+  <h3><%= date %> </h3>
 <% }) %>
----------------------------------------------------------------------
+</div>
+--------------------------------------------------------------------------------------------------
 <h1> Tickets </h1>
 <div class="ticket-container">
-  <p>Seats</p>
-  <p>price</p>
+  <h2>Seats</h2>
+  <h2>price</h2>
 <% tickets.forEach(function(t){ %>
-  <h1> <%= t.seat %></h1>
-  <h1> $<%= t.price %></h1>
+  <h3> <%= t.seat %></h3>
+  <h3> $<%= t.price %></h3>
 <%})%>
 <br><br>
 <br><br>
+<a href="/flights/<%= flight.id%>/tickets/new" > ADD A NEW TICKET</a>
 </div>
----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 
 <h2> adding destinations</h2>
 <form id="add-destination" method="POST" action="/flights/<%= flight._id %>/destinations">
@@ -48,6 +77,5 @@
   <input type="submit" value="Add The Destination">
 </form>
 <br><br>
-<a href="/flights/<%= flight.id%>/tickets/new" style="margin-left: 60%; margin:40%; padding: 50px;"> ADD A NEW TICKET</a>
 </div>
 <%- include('../partials/footer') %>

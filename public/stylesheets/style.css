@@ -19,6 +19,19 @@ a {
 #submit-button{
   width: 100px;
 }
+/* /////////////////////////////////////////////////////////////////// */
+.from-container{
+  align-items: center;
+  width: 35%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.arrival-container{
+  align-items: center;
+  width: 30%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
 .container-show{
   display: flex;
   flex-direction: column;
@@ -30,6 +43,4 @@ a {
   width: 30%;
   display: grid;
   grid-template-columns: auto auto;
-
-
 }
